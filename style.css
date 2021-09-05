@@ -20,5 +20,10 @@ body{
 }
 #canvas{
     margin-left: 14%;
-    margin-top: 5%;
+    margin-top: 2%;
+}
+h2{
+    font-size:50px;
+    width:50%;
+    margin: auto;
 }

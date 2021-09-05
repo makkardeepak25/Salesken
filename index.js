@@ -205,6 +205,7 @@ var arr = [
   77,
   71
 ];
+var tags = ["Deepak", "Mahi", "anshu", "bug"];
 window.onload = function() {
   var width = 5;
   var currX = 0;
@@ -223,13 +224,28 @@ window.onload = function() {
     }
   }
 
+  if (audio.duration === audio.currentTime) {
+    console.log("audio.duration");
+    audio.pause();
+    btn.className = "fa fa-play";
+    count = 0;
+  }
+
   btn.addEventListener("click", btnListener);
 
   ctx.fillStyle = "lightgrey";
   for (var i = 0; i < arr.length; i++) {
     var h = arr[i];
+    var cnt = 0;
     ctx.fillRect(currX, base - h, width, h);
     currX += width;
+    // if ((h > 90) & (h < 100) && cnt < 4) {
+    //   var div = document.createElement("div");
+    //   div.textContent = tags[cnt];
+    //   div.style.position = absolute;
+    //   cnt++;
+    //   canvas.appendChild(div);
+    // }
   }
   audio.addEventListener("timeupdate", function() {
     var duration = audio.duration;
@@ -270,6 +286,7 @@ window.onload = function() {
       var elaspedTime = (completedPer * audio.duration) / 100;
       audio.currentTime = elaspedTime;
     }
+    
   };
 
   function getMousePos(canvas, event) {
