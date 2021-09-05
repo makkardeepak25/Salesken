@@ -2,9 +2,7 @@ var canvas = document.getElementById("canvas");
 var ctx = canvas.getContext("2d");
 var count = 0;
 var audio = document.getElementById("audio");
-var width = 5;
-var currX = 30;
-var base = 300;
+var pp = document.getElementsByClassName("fa");
 var arr = [
   15,
   97,
@@ -184,7 +182,7 @@ var arr = [
   48,
   76,
   86,
-  95,
+  150,
   41,
   15,
   83,
@@ -210,63 +208,53 @@ var arr = [
 window.onload = function() {
   var width = 5;
   var currX = 0;
-  var base = 300; 
-var btn = document.getElementById("btn");  
-  function btnListener(){
+  var base = 300;
+  var btn = document.getElementById("btn");
+  btn.className = "fa fa-play";
+  function btnListener() {
     if (count == 0) {
-      btn.innerText = "Pause"
-      audio.play()
-      count = 1
+      btn.className = "fa fa-pause";
+      audio.play();
+      count = 1;
     } else {
-      btn.innerText = "Play"
-      audio.pause()
-      count = 0
+      btn.className = "fa fa-play";
+      audio.pause();
+      count = 0;
     }
   }
 
-  btn.addEventListener("click",btnListener)
+  btn.addEventListener("click", btnListener);
 
   ctx.fillStyle = "lightgrey";
   for (var i = 0; i < arr.length; i++) {
     var h = arr[i];
-    ctx.fillRect(currX, base-h, width, h);
+    ctx.fillRect(currX, base - h, width, h);
     currX += width;
   }
   audio.addEventListener("timeupdate", function() {
     var duration = audio.duration;
-    // var currentTime = audio.currentTime;
-    // var remaining = duration - currentTime;
     var completedPer = (audio.currentTime / audio.duration) * 100;
-    // console.log(remaining);
-    // console.log("CurrentTime:", audio.currentTime);
-    // console.log("Completed: ", completedPer);
     var barsNum = (200 / 100) * completedPer;
     var decimals = barsNum - Math.floor(barsNum);
-
     if (decimals >= 0.5) {
       barsNum = Math.floor(barsNum) + 1;
     } else {
       barsNum = Math.floor(barsNum);
     }
-
-    // console.log("Number of bars to be painted : ", barsNum);
     if (duration > 0) {
       ctx.clearRect(0, 0, width, h);
-      ctx.fillStyle = "green";
-
       var width = 5;
-      var currX = 0; 
-      var base = 300; 
-
+      var currX = 0;
+      var base = 300;
       for (var i = 0; i < arr.length; i++) {
         var h = arr[i];
 
         if (i <= barsNum) {
-          ctx.fillStyle = "red";
+          ctx.fillStyle = "hotpink";
         } else {
           ctx.fillStyle = "lightgrey";
         }
-        ctx.fillRect(currX, base-h, width, h);
+        ctx.fillRect(currX, base - h, width, h);
         currX += width;
       }
     }
@@ -276,22 +264,19 @@ var btn = document.getElementById("btn");
     var pos = getMousePos(canvas, e);
     var x = pos.x;
     var y = pos.y;
-    // console.log("X: ", x, " Y: ", y);
-    if (y >=0 && y <= base && x < 1000) {
-      var index = (x / width) | 0; 
-      // console.log("Bar Index: ", index);
+    if (y >= 0 && y <= base && x < 1000) {
+      var index = (x / width) | 0;
       var completedPer = 0.5 * (index + 1);
       var elaspedTime = (completedPer * audio.duration) / 100;
       audio.currentTime = elaspedTime;
-      // console.log("Elasped time: ", elaspedTime);
     }
   };
 
-  function getMousePos(canvas, evt) {
+  function getMousePos(canvas, event) {
     var rect = canvas.getBoundingClientRect();
     return {
-      x: evt.clientX - rect.left,
-      y: evt.clientY - rect.top
+      x: event.clientX - rect.left,
+      y: event.clientY - rect.top
     };
   }
 };

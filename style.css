@@ -1,30 +1,24 @@
 body{
     box-sizing: border-box;
 }
-.buffered {
-    height: 20px;
-    position: relative;
-    background: #555;
-    width: 300px;
-  }
-  
-  #buffered-amount {
-    display: block;
-    height: 100%;
-    background-color: #777;
-    width: 0;
-  }
-  
-  .progress {
-    margin-top: -20px;
-    height: 20px;
-    position: relative;
-    width: 300px;
-  }
-  
-  #progress-amount {
-    display: block;
-    height: 100%;
-    background-color: #595;
-    width: 0;
-  }
+#btn{
+    width: 70px;
+    height: 70px;
+    border-radius:50%;
+    background-color:skyblue;
+    color:black;
+    font-size: 40px;
+    padding: 10px;
+    margin:20px;
+    margin-left: 45%;
+
+}
+#btn:hover{
+    color:skyblue;
+    background-color:black;
+    transform: scale(1.1);
+}
+#canvas{
+    margin-left: 14%;
+    margin-top: 5%;
+}
