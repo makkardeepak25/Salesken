@@ -237,7 +237,7 @@ window.onload = function() {
   var txt=10
   for (var i = 0; i < arr.length; i++) {
     var h = arr[i];
-    if (h % 11 == 0 && cnt < 4) {
+    if (h % 17 == 0 && cnt < 4) {
       ctx.font = "13pt sans-serif";
       ctx.strokeStyle = "lightgrey";
       ctx.strokeText(tags[cnt++], txt, 130);
