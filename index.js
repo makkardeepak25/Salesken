@@ -239,7 +239,7 @@ window.onload = function() {
     var h = arr[i];
     if (h % 11 == 0 && cnt < 4) {
       ctx.font = "13pt sans-serif";
-      // ctx.fillText(tags[cnt++], txt, 100);
+      ctx.strokeStyle = "lightgrey";
       ctx.strokeText(tags[cnt++], txt, 130);
     }
     ctx.fillRect(currX, base - h, width, h);

@@ -21,6 +21,7 @@ body{
 #canvas{
     margin-left: 14%;
     margin-top: 2%;
+    background-color:rgb(65, 63, 63);
 }
 h2{
     font-size:50px;
