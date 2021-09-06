@@ -234,18 +234,23 @@ window.onload = function() {
 
   ctx.fillStyle = "lightgrey";
   var cnt = 0;
-  var txt=10
+  var txt = 10;
   for (var i = 0; i < arr.length; i++) {
     var h = arr[i];
     if (h % 17 == 0 && cnt < 4) {
+      
       ctx.font = "13pt sans-serif";
       ctx.strokeStyle = "lightgrey";
       ctx.strokeText(tags[cnt++], txt, 130);
+      ctx.beginPath();
+      ctx.moveTo(txt+10, base-100);
+      ctx.lineTo(txt+10, 140);
+      ctx.stroke();
+   
     }
     ctx.fillRect(currX, base - h, width, h);
     currX += width;
-    txt=txt+20
-   
+    txt = txt + 20;
   }
   audio.addEventListener("timeupdate", function() {
     var duration = audio.duration;
